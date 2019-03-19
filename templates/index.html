@@ -2,30 +2,60 @@
 {% block title %} API WARS {% endblock %}
 
 {% block content %}
-<table>
-    <thead>
-    <tr>
-        <th colspan="2">Name</th>
-        <th colspan="2">Diameter</th>
-        <th colspan="2">Climate</th>
-        <th colspan="2">Terrain</th>
-        <th colspan="2">Surface Water Percentage</th>
-        <th colspan="2">Population</th>
-        <th colspan="2">Residents</th>
-        <th colspan="2"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td colspan="2">test</td>
-        <td colspan="2">test</td>
-        <td colspan="2">test</td>
-        <td colspan="2">test</td>
-        <td colspan="2">test</td>
-        <td colspan="2">test</td>
-        <td colspan="2">test</td>
-        <td colspan="2">test</td>
-    </tr>
-    </tbody>
-</table>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #ffdd80;">
+        <a class="navbar-brand" href="#">API WARS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {#            <li class="nav-item active">#}
+                {#                <a class="nav-link" href="#">Item active <span class="sr-only">(current)</span></a>#}
+                {#            </li>#}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Planets List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Visiting Statistics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Registration</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Logout</a>
+                </li>
+            </ul>
+            <nav class="nav-item active">
+                <a class="navbar-text">You are logged as KALI</a>
+            </nav>
+
+        </div>
+    </nav>
+
+    <h1>Star Wars universe planets</h1>
+
+    <button type="button" class="btn btn-primary disabled" id="previousButton">Previous</button>
+    <button type="button" class="btn btn-primary" id="nextButton" onclick="changePage()">Next</button>
+
+    <table class="table table-bordered text-center shadow-sm">
+        <thead class="thead-light">
+        <tr>
+            <th>Name</th>
+            <th>Diameter</th>
+            <th>Climate</th>
+            <th>Terrain</th>
+            <th>Surface Water Percentage</th>
+            <th>Population</th>
+            <th>Residents</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+
 {% endblock %}
