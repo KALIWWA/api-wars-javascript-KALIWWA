@@ -19,3 +19,13 @@ def add_user_to_db(cursor, username, hashed_password):
                 """
     cursor.execute(sql_string, {'username': username,
                                 'password': hashed_password})
+
+
+@db_connection.connection_handler
+def get_users_data(cursor):
+    sql_string = """
+                SELECT username, password
+                FROM users"""
+    cursor.execute(sql_string)
+    users_data = cursor.fetchall()
+    return users_data

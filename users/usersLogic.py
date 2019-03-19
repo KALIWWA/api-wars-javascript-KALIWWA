@@ -38,3 +38,12 @@ def check_if_username_in_db(username):
             return True
         else:
             return False
+
+
+def verify_user_data(username, password):
+    for data in usersManager.get_users_data():
+        if username == data['username']:
+            password_from_db = data['password']
+            return verify_password(password, password_from_db)
+        else:
+            return False

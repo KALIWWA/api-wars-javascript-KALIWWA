@@ -12,17 +12,16 @@ def route_index():
 
 @app.route('/registration', methods=['GET', 'POST'])
 def route_registration():
-    if 'login' not in session:
+    if 'username' not in session:
         if request.method == 'GET':
             registration = True
             return render_template('userService.html',
-                                   login=False,
                                    registration=registration,
                                    form_url=url_for('route_registration'))
         elif request.method == 'POST':
-            username = request.form['username']
-            password1 = request.form['password1']
-            password2 = request.form['password2']
+            username = request.form.get('username')
+            password1 = request.form.get('password1')
+            password2 = request.form.get('password2')
             passwords_equal = usersLogic.are_passwords_equal(password1, password2)
 
             if passwords_equal:
@@ -32,6 +31,33 @@ def route_registration():
             else:
                 return render_template('userService.html',
                                        error_message='Passwords are not the same')
+    else:
+        flash('You are already with us')
+        return redirect('/')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def route_login():
+    if 'username' not in session:
+        if request.method == 'GET':
+            registration = False
+            return render_template('userService.html',
+                                   registration=registration,
+                                   form_url=url_for('route_login'))
+        elif request.method == 'POST':
+            username = request.form.get('username')
+            password = request.form.get('password1')
+            is_logged = usersLogic.verify_user_data(username, password)
+            if is_logged:
+                session['username'] = username
+                flash(f'You are logged as {username}.')
+                render_template('index.html',
+                                session=session,
+                                username=session['username'])
+                return redirect('/')
+            else:
+                flash(f'Wrong login or password.')
+                return redirect('/login')
     else:
         flash('You are already with us')
         return redirect('/')
