@@ -10,7 +10,7 @@ def route_index():
     return render_template('index.html')
 
 
-@app.route('/user_service', methods=['GET', 'POST'])
+@app.route('/registration', methods=['GET', 'POST'])
 def route_registration():
     if 'login' not in session:
         if request.method == 'GET':
