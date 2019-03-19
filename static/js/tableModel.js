@@ -46,8 +46,10 @@ function fillTable(data) {
 // 	let nextUrl = data.next;
 // 	planetsRequest.open('GET', nextUrl);
 // 	let planetsData = JSON.parse(planetsRequest.responseText);
-// 	return planetsData;
-// }
+//
+// 	fillTable(planetsData);
+// 	// return planetsData;
+// });
 
 // function next(data) {
 // 	let planetsRequest = new XMLHttpRequest();

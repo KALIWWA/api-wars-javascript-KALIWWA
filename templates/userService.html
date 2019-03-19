@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %} API WARS {% endblock %}
+
+{% block content %}
+
+    <form action="{{ form_url }}" method="POST">
+
+        {% if registration %}
+            <h1>Join The Dark Side</h1>
+        {% else %}
+            <h1>Good you came back it is, Login please</h1>
+        {% endif %}
+
+        <label>
+            Login: <input type="text" name="username" placeholder="Here login goes your" required/>
+        </label>
+
+        <label>
+            Password: <input type="password" name="password1" placeholder="Here password goes your" required/>
+        </label>
+
+        {% if registration %}
+            <label>
+                Password repeat: <input type="password" name="password2" placeholder="Password repeat Jedi" required/>
+            </label>
+
+            <button>JOIN</button>
+
+        {% else %}
+            <button>LOGIN</button>
+        {% endif %}
+
+        {% if error_message %}
+            {{ error_message }}
+        {% endif %}
+
+
+    </form>
+
+    <button onclick="window.location.href='/'">HOME</button>
+
+{% endblock %}
