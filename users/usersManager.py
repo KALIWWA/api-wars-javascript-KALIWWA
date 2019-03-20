@@ -18,7 +18,7 @@ def add_user_to_db(cursor, username, hashed_password):
                 VALUES (%(username)s, %(hashed_password)s)
                 """
     cursor.execute(sql_string, {'username': username,
-                                'password': hashed_password})
+                                'hashed_password': hashed_password})
 
 
 @db_connection.connection_handler

@@ -45,5 +45,4 @@ def verify_user_data(username, password):
         if username == data['username']:
             password_from_db = data['password']
             return verify_password(password, password_from_db)
-        else:
-            return False
+    return False

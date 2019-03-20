@@ -3,6 +3,7 @@ from users import usersLogic
 from flask import Flask, render_template, send_from_directory, session, request, url_for, flash, redirect
 
 app = Flask(__name__)
+app.secret_key = '123'
 
 
 @app.route('/')
@@ -61,6 +62,13 @@ def route_login():
     else:
         flash('You are already with us')
         return redirect('/')
+
+
+@app.route('/logout')
+def route_logout():
+    session.pop('username', None)
+    flash('You logged out')
+    return redirect('/')
 
 
 @app.route('/favicon.ico')
