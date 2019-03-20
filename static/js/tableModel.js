@@ -4,7 +4,7 @@ function fillTable(data) {
 	let rows = document.querySelectorAll('.row-class');
 	let requiredPlanetData;
 
-	for (let j = 0; j < rows.length; j++) {
+	for (let j = 0; j < data.results.length; j++) {
 		let row = rows[j];
 
 		requiredPlanetData = {
@@ -39,7 +39,7 @@ function fillTable(data) {
 		}
 	}
 }
-
+//
 // let nextBtn = document.getElementById('nextButton');
 // nextBtn.addEventListener('click', (data) => {
 // 	let planetsRequest = new XMLHttpRequest();

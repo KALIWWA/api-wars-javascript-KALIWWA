@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 {% block title %} API WARS {% endblock %}
 
+{% block head %}
+    <script src="{{ url_for('static', filename='js/tableView.js') }}" defer type="module"></script>
+    <script src="{{ url_for('static', filename='js/tableModel.js') }}" defer type="module"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer type="module"></script>
+{% endblock %}
+
 {% block content %}
     <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #ffdd80;">
         <a class="navbar-brand" href="#">API WARS</a>
@@ -27,11 +33,11 @@
                     <a class="nav-link" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Logout</a>
+                    <a class="nav-link disabled" href="/logout">Logout</a>
                 </li>
             </ul>
             <nav class="nav-item active">
-                <a class="navbar-text">You are logged as KALI</a>
+                <a class="navbar-text">You are logged as (username)</a>
             </nav>
 
         </div>
@@ -40,7 +46,7 @@
     <h1>Star Wars universe planets</h1>
 
     <button type="button" class="btn btn-primary disabled" id="previousButton">Previous</button>
-    <button type="button" class="btn btn-primary" id="nextButton" onclick="changePage()">Next</button>
+    <button type="button" class="btn btn-primary" id="nextButton">Next</button>
 
     <table class="table table-bordered text-center shadow-sm">
         <thead class="thead-light" id="table-head">
