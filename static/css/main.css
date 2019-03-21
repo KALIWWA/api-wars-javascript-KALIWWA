@@ -1,0 +1,6 @@
+.btn-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: gray;
+    border-color: gray;
+}
