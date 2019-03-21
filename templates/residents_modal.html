@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="modal" id="resModal">
+    <table class="table table-bordered text-center shadow-sm">
+        <thead class="thead-light" id="residents-table-head">
+        <tr>
+            <th>Name</th>
+            <th>Height</th>
+            <th>Mass</th>
+            <th>Skin Color</th>
+            <th>Hair Color</th>
+            <th>Eye Color</th>
+            <th>Birth Year</th>
+            <th>Gender</th>
+        </tr>
+        </thead>
+        <tbody id="residents-table-body"></tbody>
+    </table>
+</div>
+
+{% endblock %}

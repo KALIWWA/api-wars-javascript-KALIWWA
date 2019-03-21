@@ -23,7 +23,8 @@ function fillTable(data) {
 			if (i === 6 && requiredPlanetData.planet[i] > 0) {
 				const residentButton = document.createElement('button');
 				residentButton.classList.add('residentButton');
-				residentButton.setAttribute('id', 'resident' + i);
+				residentButton.setAttribute('id', 'resident' + j);
+				residentButton.setAttribute('data-row-number', j);
 				residentButton.textContent = requiredPlanetData.planet[i] + ' resident(s)';
 				residentButton.addEventListener('click', () => {
 					showResidentsList();

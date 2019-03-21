@@ -17,35 +17,47 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                {#            <li class="nav-item active">#}
-                {#                <a class="nav-link" href="#">Item active <span class="sr-only">(current)</span></a>#}
-                {#            </li>#}
+
                 <li class="nav-item">
                     <a class="nav-link" href="#">Planets List</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Visiting Statistics</a>
                 </li>
+                {% if not session['username'] %}
                 <li class="nav-item">
                     <a class="nav-link" href="/registration">Registration</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
                 </li>
+                {% else %}
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="/logout">Logout</a>
+                    <a class="nav-link" href="/logout">Logout</a>
                 </li>
             </ul>
-            <nav class="nav-item active">
-                <a class="navbar-text">You are logged as (username)</a>
-            </nav>
+
+            <div class="nav-item active">
+                <a class="navbar-text">You are logged as {{ session['username'] }}</a>
+            </div>
+            {% endif %}
 
         </div>
     </nav>
 
+    <div id="flash">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
     <h1>Star Wars universe planets</h1>
 
-    <button type="button" class="btn btn-primary disabled" id="previousButton">Previous</button>
+    <button type="button" class="btn btn-primary" id="previousButton">Previous</button>
     <button type="button" class="btn btn-primary" id="nextButton">Next</button>
 
     <table class="table table-bordered text-center shadow-sm">
@@ -63,5 +75,9 @@
         </thead>
         <tbody id="table-body"></tbody>
     </table>
+
+    {% if error_message %}
+        {{ error_message }}
+    {% endif %}
 
 {% endblock %}
