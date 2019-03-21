@@ -10,6 +10,9 @@ function loadPage(url) {
 	planetsRequest.open('GET', url);
 	planetsRequest.onload = () => {
 		let planetsData = JSON.parse(planetsRequest.responseText);
+
+		normalisePlanets(planetsData);
+
 		createEmptyTable(planetsData);
 		fillTable(planetsData);
 		nextUrl = planetsData.next;
@@ -45,4 +48,22 @@ function btnStatusUpdate(data) {
 	} else {
 		previousBtn.classList.remove('btn-disabled')
 	}
+}
+
+
+function normalisePlanets(data) {
+	const allPlanetsData = data.results;
+
+	let req = allPlanetsData.map((planet) => {
+		let name = planet.name,
+			diameter = (planet.diameter >= 0) ? planet.diameter + ' km' : 'unknown',
+			climate = planet.climate,
+			terrain = planet.terrain,
+			surfaceWater = (planet.surface_water >= 0) ? planet.surface_water + ' %' : 'unknown',
+			population = (planet.population > 0) ? Number(planet.population).toLocaleString('en-US') + ' people' : 'unknown',
+			residents = (planet.residents.length > 0) ? planet.residents.length + ' resident(s)' : 'No known residents';
+		return [name, diameter, climate, terrain, surfaceWater, population, residents]
+	});
+	console.log("req", req);
+
 }
