@@ -31,6 +31,7 @@ def route_registration():
                 return redirect('/')
             else:
                 return render_template('userService.html',
+                                       registration=True,
                                        error_message='Passwords are not the same')
     else:
         flash('You are already with us')
@@ -43,6 +44,7 @@ def route_login():
         if request.method == 'GET':
             registration = False
             return render_template('userService.html',
+                                   login=False,
                                    registration=registration,
                                    form_url=url_for('route_login'))
         elif request.method == 'POST':
@@ -51,8 +53,8 @@ def route_login():
             is_logged = usersLogic.verify_user_data(username, password)
             if is_logged:
                 session['username'] = username
-                flash(f'You are logged as {username}.')
                 render_template('index.html',
+                                login=True,
                                 session=session,
                                 username=session['username'])
                 return redirect('/')
