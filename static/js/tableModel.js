@@ -2,58 +2,41 @@ export {fillTable}
 
 function fillTable(data) {
 	let rows = document.querySelectorAll('.row-class');
-	let requiredPlanetData;
 
-	for (let j = 0; j < data.results.length; j++) {
-		let row = rows[j];
+	for (let i = 0; i < data.length; i++) {
+		let row = rows[i];
 
-		requiredPlanetData = {
-			planet: [data.results[j].name,
-			         data.results[j].diameter,
-			         data.results[j].climate,
-			         data.results[j].terrain,
-			         data.results[j].surface_water,
-			         data.results[j].population,
-			         data.results[j].residents.length]
-		};
-
-		for (let i = 0; i < requiredPlanetData.planet.length; i++) {
+		for (let j = 0; j <= data[i].length; j++) {
 			let cells = row.getElementsByTagName('td');
 
-			if (i === 6 && requiredPlanetData.planet[i] > 0) {
+			if (j <= 5) {
+				cells[j].textContent = data[i][j];
+
+			} else if (j === 6 && data[i][j] !== 'No known residents') {
 				const residentButton = document.createElement('button');
-				residentButton.classList.add('residentButton');
-				residentButton.setAttribute('id', 'resident' + j);
-				residentButton.setAttribute('data-row-number', j);
-				residentButton.textContent = requiredPlanetData.planet[i] + ' resident(s)';
+				residentButton.classList.add('btn', 'btn-outline-info', 'residentButton');
+				residentButton.setAttribute('id', 'resident' + i);
+				residentButton.setAttribute('data-row-number', i);
+				residentButton.textContent = data[i][j];
 				residentButton.addEventListener('click', () => {
 					showResidentsList();
 				});
-				cells[i].appendChild(residentButton);
+				cells[j].appendChild(residentButton);
 
-			} else if (i === 6 && requiredPlanetData.planet[i] === 0) {
-				cells[i].textContent = "No known residents";
+			} else if (j === 6 && data[i][j] === 'No known residents') {
+				cells[j].textContent = data[i][j];
 
-			} else {
-				cells[i].textContent = requiredPlanetData.planet[i];
+			} else if (j === data[i].length) {
+				const voteButton = document.createElement('button');
+				voteButton.classList.add('btn', 'btn-outline-success','voteButton');
+				voteButton.setAttribute('id', "vote" + i);
+				voteButton.textContent = 'Vote';
+				voteButton.addEventListener('click', () => {
+					countVote();
+				});
+				cells[j].appendChild(voteButton);
 			}
 		}
 	}
 }
-//
-// let nextBtn = document.getElementById('nextButton');
-// nextBtn.addEventListener('click', (data) => {
-// 	let planetsRequest = new XMLHttpRequest();
-// 	let nextUrl = data.next;
-// 	planetsRequest.open('GET', nextUrl);
-// 	let planetsData = JSON.parse(planetsRequest.responseText);
-//
-// 	fillTable(planetsData);
-// 	// return planetsData;
-// });
 
-// function next(data) {
-// 	let planetsRequest = new XMLHttpRequest();
-// 	let nextUrl = data.next;
-// 	planetsRequest.open('GET', nextUrl);
-// }

@@ -1,4 +1,4 @@
-import {createEmptyTable} from "./tableView.js";
+import {createEmptyTable, clearTable} from "./tableView.js";
 import {fillTable} from "./tableModel.js";
 
 let nextUrl;
@@ -11,10 +11,11 @@ function loadPage(url) {
 	planetsRequest.onload = () => {
 		let planetsData = JSON.parse(planetsRequest.responseText);
 
-		normalisePlanets(planetsData);
+		let normalisedData = normalisePlanets(planetsData);
 
-		createEmptyTable(planetsData);
-		fillTable(planetsData);
+		clearTable();
+		createEmptyTable(normalisedData);
+		fillTable(normalisedData);
 		nextUrl = planetsData.next;
 		previousUrl = planetsData.previous;
 
@@ -30,7 +31,6 @@ loadPage('https://swapi.co/api/planets/?page=1');
 
 let nextBtn = document.getElementById('nextButton');
 nextBtn.addEventListener('click', () => loadPage(nextUrl));
-
 
 
 let previousBtn = document.getElementById('previousButton');
@@ -54,7 +54,7 @@ function btnStatusUpdate(data) {
 function normalisePlanets(data) {
 	const allPlanetsData = data.results;
 
-	let req = allPlanetsData.map((planet) => {
+	return allPlanetsData.map((planet) => {
 		let name = planet.name,
 			diameter = (planet.diameter >= 0) ? planet.diameter + ' km' : 'unknown',
 			climate = planet.climate,
@@ -62,8 +62,7 @@ function normalisePlanets(data) {
 			surfaceWater = (planet.surface_water >= 0) ? planet.surface_water + ' %' : 'unknown',
 			population = (planet.population > 0) ? Number(planet.population).toLocaleString('en-US') + ' people' : 'unknown',
 			residents = (planet.residents.length > 0) ? planet.residents.length + ' resident(s)' : 'No known residents';
-		return [name, diameter, climate, terrain, surfaceWater, population, residents]
-	});
-	console.log("req", req);
 
+		return [name, diameter, climate, terrain, surfaceWater, population, residents];
+	});
 }
