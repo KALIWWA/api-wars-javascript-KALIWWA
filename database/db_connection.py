@@ -11,8 +11,6 @@ def get_connection_string():
 
     env_variables_defined = user_name and password and host and database_name
 
-    print('Env variables:', user_name, password, host, database_name)
-
     if env_variables_defined:
         return 'postgresql://{user_name}:{password}@{host}/{database_name}'.format(
             user_name=user_name,
