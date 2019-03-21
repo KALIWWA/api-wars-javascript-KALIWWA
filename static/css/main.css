@@ -1,6 +1,27 @@
+body {
+    background-color: #FFF6E6;
+}
+
+#title {
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 2%;
+}
+
+#previousButton, #nextButton {
+    margin-left: 1%;
+}
+
+
 .btn-disabled {
     cursor: not-allowed;
     pointer-events: none;
-    background-color: gray;
+    color: gray;
     border-color: gray;
+}
+
+.table {
+    width: 98%;
+    margin: 1%;
+    background-color: #fff;
 }
