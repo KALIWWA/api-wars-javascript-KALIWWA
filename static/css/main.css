@@ -2,6 +2,10 @@ body {
     background-color: #FFF6E6;
 }
 
+#navbar {
+    background-color: #B8CBED;
+}
+
 #title {
     text-align: center;
     letter-spacing: 1px;
@@ -53,9 +57,9 @@ body {
     background-color: #ffffff;
     width: 80%;
     -webkit-animation-name: slideIn;
-    -webkit-animation-duration: 0.5s;
+    -webkit-animation-duration: 0.8s;
     animation-name: slideIn;
-    animation-duration: 0.5s
+    animation-duration: 0.8s
 }
 .end {
     color: white;
@@ -71,7 +75,7 @@ body {
 }
 .popup-header {
     padding: 1px 10px;
-    background-color: #8AC1E0;
+    background-color: #B8CBED;
     color: white;
     border-radius: 5px 5px 0px 0px;
 }

@@ -6,13 +6,11 @@ function showResidentsList(data, index) {
 
 	for (let i = 0; i < data[index][6].length; i++) {
 		let url = data[index][6][i];
-		console.log(url);
 		let residentsRequest = new XMLHttpRequest();
 		residentsRequest.open('GET', url);
 		residentsRequest.onload = () => {
 			let residentsData = JSON.parse(residentsRequest.responseText);
 			let normalisedResidents = normaliseResidents(residentsData);
-			console.log(normalisedResidents);
 
 			fillResidentsModal(normalisedResidents);
 		};
