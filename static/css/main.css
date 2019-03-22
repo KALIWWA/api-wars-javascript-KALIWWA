@@ -12,6 +12,9 @@ body {
     margin-left: 1%;
 }
 
+#popupHeader {
+    margin: 0.3%;
+}
 
 .btn-disabled {
     cursor: not-allowed;
@@ -42,8 +45,11 @@ body {
     animation-duration: 0.4s
 }
 .popup-content {
+    border-radius: 5px;
     position: fixed;
-    top: 10%;
+    top: 20%;
+    left: 10%;
+    right: 10%;
     background-color: #ffffff;
     width: 80%;
     -webkit-animation-name: slideIn;
@@ -67,6 +73,7 @@ body {
     padding: 1px 10px;
     background-color: #8AC1E0;
     color: white;
+    border-radius: 5px 5px 0px 0px;
 }
 .popup-body {padding: 1px 5px;}
 @-webkit-keyframes slideIn {
@@ -88,4 +95,5 @@ body {
 
 .popup-close-btn {
     cursor: pointer;
+    float: right;
 }
