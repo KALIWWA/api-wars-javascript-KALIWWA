@@ -69,7 +69,7 @@ def route_login():
 @app.route('/logout')
 def route_logout():
     session.pop('username', None)
-    flash('You logged out')
+    flash('You safely logged out')
     return redirect('/')
 
 

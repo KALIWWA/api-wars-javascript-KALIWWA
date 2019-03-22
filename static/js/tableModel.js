@@ -1,4 +1,5 @@
 export {fillTable}
+import {showResidentsList} from "./residentsView.js";
 
 function fillTable(data) {
 	let rows = document.querySelectorAll('.row-class');
@@ -17,9 +18,9 @@ function fillTable(data) {
 				residentButton.classList.add('btn', 'btn-outline-info', 'residentButton');
 				residentButton.setAttribute('id', 'resident' + i);
 				residentButton.setAttribute('data-row-number', i);
-				residentButton.textContent = data[i][j];
+				residentButton.textContent = data[i][j].length + ' resident(s)';
 				residentButton.addEventListener('click', () => {
-					showResidentsList();
+					showResidentsList(data, i);
 				});
 				cells[j].appendChild(residentButton);
 

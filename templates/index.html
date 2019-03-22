@@ -2,13 +2,17 @@
 {% block title %} API WARS {% endblock %}
 
 {% block head %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
     <script src="{{ url_for('static', filename='js/tableView.js') }}" defer type="module"></script>
     <script src="{{ url_for('static', filename='js/tableModel.js') }}" defer type="module"></script>
+    <script src="{{ url_for('static', filename='js/residentsView.js') }}" defer type="module"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}" defer type="module"></script>
 {% endblock %}
 
 {% block content %}
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #B8CBED;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B8CBED;">
         <a class="navbar-brand" href="#">API WARS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,22 +29,22 @@
                     <a class="nav-link" href="#">Visiting Statistics</a>
                 </li>
                 {% if not session['username'] %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/registration">Registration</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/registration">Registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
                 {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
-                </li>
-            </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    </ul>
 
-            <div class="nav-item active">
-                <a class="navbar-text">You are logged as {{ session['username'] }}</a>
-            </div>
-            {% endif %}
+                    <div class="nav-item active">
+                        <a class="navbar-text">You are logged as {{ session['username'] }}</a>
+                    </div>
+                {% endif %}
 
         </div>
     </nav>
@@ -56,6 +60,8 @@
     </div>
 
     <h1 id="title">Star Wars universe planets</h1>
+
+    <div id="residents"></div>
 
     <button type="button" class="btn btn-outline-primary" id="previousButton">Previous</button>
     <button type="button" class="btn btn-outline-primary" id="nextButton">Next</button>
@@ -75,9 +81,5 @@
         </thead>
         <tbody id="table-body"></tbody>
     </table>
-
-    {% if error_message %}
-        {{ error_message }}
-    {% endif %}
 
 {% endblock %}

@@ -1,6 +1,7 @@
 import {createEmptyTable, clearTable} from "./tableView.js";
 import {fillTable} from "./tableModel.js";
 
+
 let nextUrl;
 let previousUrl;
 
@@ -61,7 +62,8 @@ function normalisePlanets(data) {
 			terrain = planet.terrain,
 			surfaceWater = (planet.surface_water >= 0) ? planet.surface_water + ' %' : 'unknown',
 			population = (planet.population > 0) ? Number(planet.population).toLocaleString('en-US') + ' people' : 'unknown',
-			residents = (planet.residents.length > 0) ? planet.residents.length + ' resident(s)' : 'No known residents';
+			residents = (planet.residents.length > 0) ? planet.residents : 'No known residents';
+
 
 		return [name, diameter, climate, terrain, surfaceWater, population, residents];
 	});
