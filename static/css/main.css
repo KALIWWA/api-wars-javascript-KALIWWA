@@ -85,3 +85,7 @@ body {
     from {opacity: 0}
     to {opacity: 1}
 }
+
+.popup-close-btn {
+    cursor: pointer;
+}

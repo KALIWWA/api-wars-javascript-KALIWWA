@@ -2,7 +2,7 @@ export {showResidentsList}
 
 function showResidentsList(data, index) {
 
-	createResidentsModal(data);
+	createResidentsModal(data, index);
 
 	for (let i = 0; i < data[index][6].length; i++) {
 		let url = data[index][6][i];
@@ -34,14 +34,24 @@ function normaliseResidents(resident) {
 
 }
 
-function createResidentsModal(data) {
+function deleteElement(element) {
+	element.remove();
+}
 
-	let modal = document.querySelector('body');
-	modal.insertAdjacentHTML('beforebegin', '<div id="residentsModal" class="popup">\n' +
+function outsideClick(e) {
+	if (e.target === residentsModal) {
+		residentsModal.remove()
+	}
+}
+
+function createResidentsModal(data, index) {
+
+	let residentsDiv = document.querySelector('#residents');
+	residentsDiv.insertAdjacentHTML('beforebegin', '<div id="residentsModal" class="popup">\n' +
 		'        <div class="popup-content">\n' +
 		'            <div class="popup-header">\n' +
-		'                <span id="popupCloseButton" class="close-btn">&times;</span>\n' +
-		'                <p id="newBoardHeader">Residents</p>\n' +
+		'                <span id="popupCloseButton" class="popup-close-btn">&times;</span>\n' +
+		'                <p id="popupHeader">Residents of </p>\n' +
 		'            </div>\n' +
 		'            <div class="popup-body">\n' +
 		'                <table class="table table-bordered text-center shadow-sm">\n' +
@@ -62,7 +72,18 @@ function createResidentsModal(data) {
 		'            </div>\n' +
 		'        </div>\n' +
 		'    </div>');
+
+	let residentsModal = document.getElementById('residentsModal');
+	let popupHeader = document.getElementById('popupHeader');
+	popupHeader.textContent = 'Residents of ' + data[index][0];
+
+	let popupCloseButton = document.getElementById('popupCloseButton');
+	popupCloseButton.addEventListener('click', () => deleteElement(residentsModal));
+
+	window.addEventListener('click', outsideClick);
 }
+
+
 
 
 function fillResidentsModal(data) {
