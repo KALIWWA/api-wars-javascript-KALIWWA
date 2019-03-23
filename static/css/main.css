@@ -1,23 +1,129 @@
 body {
-    background-color: #FFF6E6;
+    background-image: url(background.png);
+    background-position: center;
 }
 
 #navbar {
-    background-color: #B8CBED;
+    background-color: #fff;
+    opacity: 0.9;
 }
 
 #title {
     text-align: center;
     letter-spacing: 1px;
     margin-top: 2%;
+    color: #FFE300;
+    font-weight: bolder;
+    word-spacing: 6px;
+    font-size: 68px;
+}
+
+
+#popupHeader {
+    margin: 0.3%;
+}
+
+#table-body tr:nth-child(1), #table-body tr:nth-child(4), #table-body tr:nth-child(7), #table-body tr:nth-child(10) {
+    color: #00e68a;
+}
+
+#resident0, #resident3, #resident6, #resident9 {
+    color: #00e68a;
+    border-color: #00e68a;
+}
+
+#resident0:hover, #resident3:hover, #resident6:hover, #resident9:hover {
+    color: #fff;
+    border-color: #00e68a;
+    background: #00e68a;
+}
+
+#table-body tr:nth-child(2), #table-body tr:nth-child(5), #table-body tr:nth-child(8) {
+    color: #b30000;
+}
+
+#resident1, #resident4, #resident7 {
+    color: #b30000;
+    border-color: #b30000;
+}
+
+#resident1:hover, #resident4:hover, #resident7:hover {
+    color: #fff;
+    border-color: #b30000;
+    background: #b30000;
+}
+
+#table-body tr:nth-child(3), #table-body tr:nth-child(6), #table-body tr:nth-child(9) {
+    color: deepskyblue;
+}
+
+#resident2, #resident5, #resident8 {
+    color: deepskyblue;
+    border-color: deepskyblue;
+}
+
+#resident2:hover, #resident5:hover, #resident8:hover {
+    color: #fff;
+    border-color: deepskyblue;
+    background: deepskyblue;
+}
+
+
+thead {
+    /*background: #66c2ff;*/
+    background: #5EA2C4;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #000;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    vertical-align: middle;
+    horiz-align: center;
+}
+
+#table-head th:first-child {
+    border-right: 5px solid #FFE300;
 }
 
 #previousButton, #nextButton {
     margin-left: 1%;
+    color: #000;
+    border-color: #fff;
+    background: #fff;
 }
 
-#popupHeader {
-    margin: 0.3%;
+#previousButton:hover, #nextButton:hover {
+    color: #000;
+    border-color: #FFE300;
+    background: #FFE300;
+}
+
+.btn-disabled {
+    color: gray !important;
+    border-color: gray !important;
+    background: #595959;
+    opacity: 0.85;
+}
+
+.voteButton {
+    color: orange;
+    border-color: orange;
+}
+
+.voteButton:hover {
+    background: orange;
+    border-color: orange;
+}
+
+.row-class {
+    background: #000;
+}
+
+.row-class td:first-child {
+    color: #FFE300;
+    border-right: 5px solid #FFE300;
+    text-transform: uppercase;
+    font-weight: bolder;
 }
 
 .btn-disabled {
@@ -42,62 +148,96 @@ body {
     width: 100%;
     height: 100%;
     background-color: #F1F1F1;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     -webkit-animation-name: fadeIn;
     -webkit-animation-duration: 0.4s;
     animation-name: fadeIn;
     animation-duration: 0.4s
 }
+
 .popup-content {
     border-radius: 5px;
     position: fixed;
     top: 20%;
     left: 10%;
     right: 10%;
-    background-color: #ffffff;
+    background-color: #5EA2C4;
     width: 80%;
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.8s;
     animation-name: slideIn;
     animation-duration: 0.8s
 }
+
 .end {
-    color: white;
+    color: #FFE300;
     float: right;
     font-size: 15px;
     font-weight: bold;
 }
+
 .end:hover,
 .end:focus {
-    color: #000;
+    color: #FFE300;
     text-decoration: underline;
     cursor: pointer;
 }
+
 .popup-header {
     padding: 1px 10px;
-    background-color: #B8CBED;
-    color: white;
-    border-radius: 5px 5px 0px 0px;
+    background-color: #000;
+    color: #FFE300;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-radius: 5px 5px 0 0;
 }
-.popup-body {padding: 1px 5px;}
+
+.popup-body {
+    padding: 1px 5px;
+}
+
 @-webkit-keyframes slideIn {
-    from {bottom: -300px; opacity: 0}
-    to {bottom: 0; opacity: 1}
+    from {
+        bottom: -300px;
+        opacity: 0
+    }
+    to {
+        bottom: 0;
+        opacity: 1
+    }
 }
+
 @keyframes slideIn {
-    from {bottom: -300px; opacity: 0}
-    to {bottom: 0; opacity: 1}
+    from {
+        bottom: -300px;
+        opacity: 0
+    }
+    to {
+        bottom: 0;
+        opacity: 1
+    }
 }
+
 @-webkit-keyframes fadeIn {
-    from {opacity: 0}
-    to {opacity: 1}
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
 }
+
 @keyframes fadeIn {
-    from {opacity: 0}
-    to {opacity: 1}
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
 }
 
 .popup-close-btn {
     cursor: pointer;
     float: right;
 }
+
