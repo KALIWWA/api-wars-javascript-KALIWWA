@@ -6,11 +6,12 @@
     <form action="{{ form_url }}" method="POST">
 
         {% if registration %}
-            <h1>Join The Dark Side</h1>
+            <h1 class="title">Join The Dark Side</h1>
         {% else %}
-            <h1>Good you came back it is, Login please</h1>
+            <h1 class="title">Good you came back it is, Login please</h1>
         {% endif %}
 
+    <div id="loginBox">
         <label>
             Username: <input type="text" name="username" placeholder="Username goes your here" required/>
         </label>
@@ -24,10 +25,10 @@
                 Repeat Password: <input type="password" name="password2" placeholder="Password repeat please" required/>
             </label>
 
-            <button>JOIN</button>
+            <button class="btn btn-primary loginBtn">JOIN</button>
 
         {% else %}
-            <button>LOGIN</button>
+            <button class="btn btn-primary loginBtn">LOGIN</button>
         {% endif %}
 
         {% if error_message %}
@@ -47,6 +48,6 @@
         {% endwith %}
     </div>
 
-    <button onclick="window.location.href='/'">HOME</button>
-
+    <button class="btn btn-outline-primary" id="homeBtn" onclick="window.location.href='/'">HOME</button>
+    </div>
 {% endblock %}

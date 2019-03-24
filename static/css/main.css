@@ -1,6 +1,6 @@
 body {
     background-image: url(background.png);
-    background-position: center;
+    background-position: inherit;
 }
 
 #navbar {
@@ -34,8 +34,8 @@ body {
 
 #resident0:hover, #resident3:hover, #resident6:hover, #resident9:hover {
     color: #fff;
-    border-color: #00e68a;
-    background: #00e68a;
+    border-color: #00b36b;
+    background: #00b36b;
 }
 
 #table-body tr:nth-child(2), #table-body tr:nth-child(5), #table-body tr:nth-child(8) {
@@ -49,23 +49,23 @@ body {
 
 #resident1:hover, #resident4:hover, #resident7:hover {
     color: #fff;
-    border-color: #b30000;
-    background: #b30000;
+    border-color: #990000;
+    background: #990000;
 }
 
 #table-body tr:nth-child(3), #table-body tr:nth-child(6), #table-body tr:nth-child(9) {
-    color: deepskyblue;
+    color: #00bfff;
 }
 
 #resident2, #resident5, #resident8 {
-    color: deepskyblue;
-    border-color: deepskyblue;
+    color: #00bfff;
+    border-color: #00bfff;
 }
 
 #resident2:hover, #resident5:hover, #resident8:hover {
     color: #fff;
-    border-color: deepskyblue;
-    background: deepskyblue;
+    border-color: #0099cc;
+    background: #0099cc;
 }
 
 
@@ -98,11 +98,63 @@ thead {
     background: #FFE300;
 }
 
+#loginBox {
+    border-radius: 5px;
+    position: fixed;
+    top: 40%;
+    left: 10%;
+    right: 10%;
+    background-color: #000;
+    width: 80%;
+    padding: 3%;
+    color: #fff;
+}
+
+#homeBtn {
+    color: #000;
+    border-color: #fff;
+    background: #fff;
+
+}
+
+#homeBtn:hover {
+    color: #000;
+    border-color: #FFE300;
+    background: #FFE300;
+}
+
+.loginBtn {
+    color: #000;
+    border-color: #fff;
+    background: #fff;
+    filter: brightness(70%);
+    margin: 3px;
+}
+
+.loginBtn:hover {
+    color: #000;
+    border-color: #fff;
+    background: #fff;
+    filter: brightness(100%);
+}
+
+.title {
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 2%;
+    color: #FFE300;
+    font-weight: bolder;
+    word-spacing: 6px;
+    font-size: 68px;
+}
+
 .btn-disabled {
     color: gray !important;
     border-color: gray !important;
     background: #595959;
     opacity: 0.85;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .voteButton {
@@ -126,12 +178,6 @@ thead {
     font-weight: bolder;
 }
 
-.btn-disabled {
-    cursor: not-allowed;
-    pointer-events: none;
-    color: gray;
-    border-color: gray;
-}
 
 .table {
     width: 98%;
@@ -194,6 +240,18 @@ thead {
 
 .popup-body {
     padding: 1px 5px;
+}
+
+#residents-table-head tr:first-child {
+    background: #C69A3B;
+}
+
+#residents-table-body tr {
+    background: #b3b3b3;
+}
+
+#residents-table-body td:first-child {
+    font-weight: bold;
 }
 
 @-webkit-keyframes slideIn {

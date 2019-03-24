@@ -53,7 +53,7 @@ function createResidentsModal(data, index) {
 		'            </div>\n' +
 		'            <div class="popup-body">\n' +
 		'                <table class="table table-bordered text-center shadow-sm">\n' +
-		'                    <thead class="thead-light" id="residents-table-head">\n' +
+		'                    <thead class="thead" id="residents-table-head">\n' +
 		'                    <tr>\n' +
 		'                        <th>Name</th>\n' +
 		'                        <th>Height</th>\n' +
