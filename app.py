@@ -73,14 +73,14 @@ def route_logout():
     return redirect('/')
 
 
-# @app.route('/favicon.ico')
-# def route_favicon():
-#     return send_from_directory(os.path.join(app.root_path, 'static'),
-#                                'stormTrooper.ico', mimetype='image/vnd.microsoft.icon')
+@app.route('/favicon.ico')
+def route_favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'stormTrooper.ico', mimetype='image/vnd.microsoft.icon')
 
 
-# if __name__ == '__main__':
-#     app.run(
-#         debug=True,
-#         port=8000
-#     )
+if __name__ == '__main__':
+    app.run(
+        debug=True,
+        port=8000
+    )
