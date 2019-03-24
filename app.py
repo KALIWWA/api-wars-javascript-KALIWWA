@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.secret_key = '123'
 
 
-@app.route('/home')
+@app.route('/')
 def route_index():
     return render_template('index.html')
 
@@ -73,10 +73,10 @@ def route_logout():
     return redirect('/')
 
 
-@app.route('/favicon.ico')
-def route_favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
-                               'stormTrooper.ico', mimetype='image/vnd.microsoft.icon')
+# @app.route('/favicon.ico')
+# def route_favicon():
+#     return send_from_directory(os.path.join(app.root_path, 'static'),
+#                                'stormTrooper.ico', mimetype='image/vnd.microsoft.icon')
 
 
 if __name__ == '__main__':
