@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Good you came back it is, Login please!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="loginForm">
+                    <div>
+                        <input type="text" name="userName" id="loginUserName">
+                        <label for="userName"> Username</label>
+                    </div>
+                    <div>
+                        <input type="password" name="password" id="LoginPassword">
+                        <label for="password"> Password</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">LOGIN!</button>
+                </form>
+                <div id="loginMessage"></div>
+            </div>
+        </div>
+    </div>
+</div>

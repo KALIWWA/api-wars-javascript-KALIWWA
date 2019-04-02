@@ -2,13 +2,7 @@
 {% block title %} API WARS {% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <script src="{{ url_for('static', filename='js/tableView.js') }}" defer type="module"></script>
-    <script src="{{ url_for('static', filename='js/tableModel.js') }}" defer type="module"></script>
-    <script src="{{ url_for('static', filename='js/residentsView.js') }}" defer type="module"></script>
-    <script src="{{ url_for('static', filename='js/main.js') }}" defer type="module"></script>
 {% endblock %}
 
 {% block content %}
@@ -29,11 +23,11 @@
                     <a class="nav-link" href="#">Visiting Statistics</a>
                 </li>
                 {% if not session['username'] %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/registration">Registration</a>
+                    <li class="nav-item" id="registrationBtn">
+                        <a class="nav-link" data-target="#registrationModal" data-toggle="modal">Registration</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
+                    <li class="nav-item" id="loginBtn">
+                        <a class="nav-link" data-target="#loginModal" data-toggle="modal">Login</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
@@ -59,6 +53,9 @@
         {% endwith %}
     </div>
 
+    {% include 'registration_modal.html' %}
+    {% include 'login_modal.html' %}
+
     <h1 id="title">STAR WARS UNIVERSE PLANETS</h1>
 
     <div id="residents"></div>
@@ -83,3 +80,4 @@
     </table>
 
 {% endblock %}
+

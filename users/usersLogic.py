@@ -23,11 +23,11 @@ def register_user(username, password):
     username_in_db = check_if_username_in_db(username)
 
     if username_in_db:
-        return "Username occupied!"
+        return "error"
     else:
         hashed_password = hash_password(password)
         usersManager.add_user_to_db(username, hashed_password)
-        return "Successful registration!"
+        return "success"
 
 
 def check_if_username_in_db(username):
@@ -36,8 +36,6 @@ def check_if_username_in_db(username):
     for data in all_usernames:
         if data['username'] == username:
             return True
-        else:
-            return False
 
 
 def verify_user_data(username, password):

@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS public.users;
 CREATE TABLE users
 (
   id       SERIAL PRIMARY KEY NOT NULL,
-  username VARCHAR(50) UNIQUE NOT NULL,
+  username VARCHAR(50)        NOT NULL,
   password VARCHAR(200)       NOT NULL
 );
 

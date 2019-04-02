@@ -1,6 +1,6 @@
 import os
 from users import usersLogic
-from flask import Flask, render_template, send_from_directory, session, request, url_for, flash, redirect
+from flask import Flask, render_template, send_from_directory, session, request, url_for, flash, redirect, jsonify
 
 app = Flask(__name__)
 app.secret_key = '123'
@@ -11,56 +11,41 @@ def route_index():
     return render_template('index.html')
 
 
-@app.route('/registration', methods=['GET', 'POST'])
+@app.route('/registration', methods=['POST'])
 def route_registration():
     if 'username' not in session:
-        if request.method == 'GET':
-            registration = True
-            return render_template('userService.html',
-                                   registration=registration,
-                                   form_url=url_for('route_registration'))
-        elif request.method == 'POST':
-            username = request.form.get('username')
-            password1 = request.form.get('password1')
-            password2 = request.form.get('password2')
-            passwords_equal = usersLogic.are_passwords_equal(password1, password2)
+        registration_data = request.get_json()
+        username = registration_data['username']
+        password1 = registration_data['password']
+        password2 = registration_data['passwordConfirm']
+        passwords_equal = usersLogic.are_passwords_equal(password1, password2)
 
-            if passwords_equal:
-                status = usersLogic.register_user(username, password1)
-                flash(status)
-                return redirect('/')
-            else:
-                return render_template('userService.html',
-                                       registration=True,
-                                       error_message='Passwords are not the same')
+        if passwords_equal:
+            status = usersLogic.register_user(username, password1)
+            return jsonify({'state': status})
+        else:
+            return jsonify({'state': 'notEqualPasswords'})
     else:
-        flash('You are already with us')
-        return redirect('/')
+        return jsonify({'state': 'logged'})
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST'])
 def route_login():
     if 'username' not in session:
-        if request.method == 'GET':
-            registration = False
-            return render_template('userService.html',
-                                   login=False,
-                                   registration=registration,
-                                   form_url=url_for('route_login'))
-        elif request.method == 'POST':
-            username = request.form.get('username')
-            password = request.form.get('password1')
-            is_logged = usersLogic.verify_user_data(username, password)
-            if is_logged:
-                session['username'] = username
-                render_template('index.html',
-                                login=True,
-                                session=session,
-                                username=session['username'])
-                return redirect('/')
-            else:
-                flash(f'Wrong login or password.')
-                return redirect('/login')
+        login_data = request.get_json()
+        username = login_data['username']
+        password = login_data['password']
+        is_logged = usersLogic.verify_user_data(username, password)
+        if is_logged:
+            session['username'] = username
+            render_template('index.html',
+                            login=True,
+                            session=session,
+                            username=session['username'])
+            return redirect('/')
+        else:
+            flash(f'Wrong login or password.')
+            return redirect('/login')
     else:
         flash('You are already with us')
         return redirect('/')
@@ -81,4 +66,4 @@ def route_favicon():
 
 if __name__ == '__main__':
     app.run(debug=True,
-            port=6000)
+            port=8000)

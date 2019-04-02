@@ -18,6 +18,10 @@ body {
     font-size: 68px;
 }
 
+#registrationBtn:hover {
+    cursor: pointer;
+}
+
 
 #popupHeader {
     margin: 0.3%;

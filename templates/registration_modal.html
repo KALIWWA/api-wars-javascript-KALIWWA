@@ -1,0 +1,32 @@
+<!-- Modal -->
+<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registrationModalLabel">Join The Dark Side!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="registrationForm">
+                    <div>
+                        <input type="text" name="userName" id="userName">
+                        <label for="userName"> Username</label>
+                    </div>
+                    <div>
+                        <input type="password" name="password" id="password">
+                        <label for="password"> Password</label>
+                    </div>
+                    <div>
+                        <input type="password" name="passwordConfirm" id="passwordConfirm">
+                        <label for="passwordConfirm"> Confirm Password</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">JOIN!</button>
+                </form>
+                <div id="registerMessage"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import {createEmptyTable, clearTable} from "./tableView.js";
 import {fillTable} from "./tableModel.js";
-
+import {getRegistrationData} from "./registration.js";
+import {getLoginData} from "./login.js";
 
 let nextUrl;
 let previousUrl;
@@ -28,7 +29,7 @@ function loadPage(url) {
 
 }
 
-loadPage('https://swapi.co/api/planets/?page=1');
+
 
 let nextBtn = document.getElementById('nextButton');
 nextBtn.addEventListener('click', () => loadPage(nextUrl));
@@ -68,3 +69,17 @@ function normalisePlanets(data) {
 		return [name, diameter, climate, terrain, surfaceWater, population, residents];
 	});
 }
+
+
+loadPage('https://swapi.co/api/planets/?page=1');
+let registerBtn = document.getElementById('registrationBtn');
+let loginBtn = document.getElementById('loginBtn');
+
+registerBtn.addEventListener('click', function (event) {
+	event.preventDefault();
+	getRegistrationData()
+});
+loginBtn.addEventListener('click', function (event) {
+	event.preventDefault();
+	getLoginData();
+});
