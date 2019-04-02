@@ -1,7 +1,7 @@
 import {createEmptyTable, clearTable} from "./tableView.js";
 import {fillTable} from "./tableModel.js";
 import {getRegistrationData} from "./registration.js";
-import {getLoginData} from "./login.js";
+import {getLoginData, logout} from "./login.js";
 
 let nextUrl;
 let previousUrl;
@@ -74,12 +74,15 @@ function normalisePlanets(data) {
 loadPage('https://swapi.co/api/planets/?page=1');
 let registerBtn = document.getElementById('registrationBtn');
 let loginBtn = document.getElementById('loginBtn');
+// let logoutBtn = document.getElementById('logoutBtn');
 
 registerBtn.addEventListener('click', function (event) {
 	event.preventDefault();
 	getRegistrationData()
 });
+
 loginBtn.addEventListener('click', function (event) {
 	event.preventDefault();
 	getLoginData();
 });
+

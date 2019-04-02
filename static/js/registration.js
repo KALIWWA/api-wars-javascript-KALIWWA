@@ -11,12 +11,12 @@ function getRegistrationData() {
 			password: document.getElementById('password').value,
 			passwordConfirm: document.getElementById('passwordConfirm').value
 		};
-		sendRegistrationData(registrationData);
+		register(registrationData);
 
 	});
 }
 
-function sendRegistrationData(data) {
+function register(data) {
 
 	const registerMessage = document.getElementById('registerMessage');
 	let registrationRequest = new XMLHttpRequest();
@@ -29,7 +29,6 @@ function sendRegistrationData(data) {
 			const response = JSON.parse(this.responseText);
 			if (response['state'] === 'success') {
 				registerMessage.innerText = 'Registration Successful';
-				sessionStorage.setItem('username', data['username']);
 			} else if (response['state'] === 'error') {
 				registerMessage.innerText = 'User already exists';
 			} else if (response['state'] === 'logged') {

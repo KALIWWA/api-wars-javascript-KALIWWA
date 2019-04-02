@@ -37,25 +37,19 @@ def route_login():
         password = login_data['password']
         is_logged = usersLogic.verify_user_data(username, password)
         if is_logged:
-            session['username'] = username
-            render_template('index.html',
-                            login=True,
-                            session=session,
-                            username=session['username'])
-            return redirect('/')
+            return jsonify({'state': 'success'})
         else:
-            flash(f'Wrong login or password.')
-            return redirect('/login')
+            return jsonify({'state': 'fail'})
     else:
-        flash('You are already with us')
-        return redirect('/')
+        return jsonify({'state': 'logged'})
 
 
 @app.route('/logout')
 def route_logout():
     session.pop('username', None)
-    flash('You safely logged out')
-    return redirect('/')
+    # return jsonify({'state': 'loggedOut'})
+    # flash('You safely logged out')
+    # return redirect('/')
 
 
 @app.route('/favicon.ico')

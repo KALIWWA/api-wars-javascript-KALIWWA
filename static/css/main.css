@@ -3,6 +3,10 @@ body {
     background-position: inherit;
 }
 
+a {
+    text-decoration: none;
+}
+
 #navbar {
     background-color: #fff;
     opacity: 0.9;
@@ -22,10 +26,11 @@ body {
     cursor: pointer;
 }
 
-
-#popupHeader {
-    margin: 0.3%;
+#loginBtn:hover {
+    cursor: pointer;
 }
+
+
 
 #table-body tr:nth-child(1), #table-body tr:nth-child(4), #table-body tr:nth-child(7), #table-body tr:nth-child(10) {
     color: #00e68a;
@@ -125,6 +130,10 @@ thead {
     color: #000;
     border-color: #FFE300;
     background: #FFE300;
+}
+
+.logInfo {
+    display: flex;
 }
 
 .loginBtn {
@@ -246,6 +255,11 @@ thead {
     padding: 1px 5px;
 }
 
+#popupHeader {
+    margin: 0.3%;
+}
+
+
 #residents-table-head tr:first-child {
     background: #C69A3B;
 }
@@ -301,5 +315,9 @@ thead {
 .popup-close-btn {
     cursor: pointer;
     float: right;
+}
+
+#logoutBtn:hover {
+    cursor: pointer;
 }
 
