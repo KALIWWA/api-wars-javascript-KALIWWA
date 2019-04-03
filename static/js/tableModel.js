@@ -3,6 +3,8 @@ import {showResidentsList} from "./residents.js";
 
 function fillTable(data) {
 	let rows = document.querySelectorAll('.row-class');
+	let plainContentCellsAmount = 5;
+	let residentsCellNumber = 6;
 
 	for (let i = 0; i < data.length; i++) {
 		let row = rows[i];
@@ -10,10 +12,10 @@ function fillTable(data) {
 		for (let j = 0; j <= data[i].length; j++) {
 			let cells = row.getElementsByTagName('td');
 
-			if (j <= 5) {
+			if (j <= plainContentCellsAmount) {
 				cells[j].textContent = data[i][j];
 
-			} else if (j === 6 && data[i][j] !== 'No known residents') {
+			} else if (j === residentsCellNumber && data[i][j] !== 'No known residents') {
 				const residentButton = document.createElement('button');
 				residentButton.classList.add('btn', 'btn-outline-info', 'residentButton');
 				residentButton.setAttribute('id', 'resident' + i);
@@ -24,17 +26,17 @@ function fillTable(data) {
 				});
 				cells[j].appendChild(residentButton);
 
-			} else if (j === 6 && data[i][j] === 'No known residents') {
+			} else if (j === residentsCellNumber && data[i][j] === 'No known residents') {
 				cells[j].textContent = data[i][j];
 
-			} else if (j === data[i].length) {
+			} else if (j === data[i].length && sessionStorage.getItem('username')) {
 				const voteButton = document.createElement('button');
 				voteButton.classList.add('btn', 'btn-outline-success','voteButton');
 				voteButton.setAttribute('id', "vote" + i);
 				voteButton.textContent = 'Vote';
-				voteButton.addEventListener('click', () => {
-					countVote();
-				});
+				// voteButton.addEventListener('click', () => {
+				// 	addVote();
+				// });
 				cells[j].appendChild(voteButton);
 			}
 		}
