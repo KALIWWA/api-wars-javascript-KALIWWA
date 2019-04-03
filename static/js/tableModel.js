@@ -1,6 +1,8 @@
 export {fillTable}
 import {showResidentsList} from "./residents.js";
 
+
+
 function fillTable(data) {
 	let rows = document.querySelectorAll('.row-class');
 	let plainContentCellsAmount = 5;

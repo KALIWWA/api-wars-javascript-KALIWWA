@@ -1,4 +1,4 @@
-export {createEmptyTable, clearTable}
+export {createEmptyTable}
 
 function createEmptyTable(data) {
 	const tableBody = document.querySelector('#table-body');
@@ -14,13 +14,5 @@ function createEmptyTable(data) {
 			const tableCell = document.createElement('td');
 			tableRow.appendChild(tableCell);
 		}
-	}
-}
-
-function clearTable() {
-	const tableBody = document.querySelector('#table-body');
-
-	while (tableBody.firstChild) {
-		tableBody.removeChild(tableBody.firstChild)
 	}
 }

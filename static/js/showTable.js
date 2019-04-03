@@ -1,46 +1,43 @@
 export {loadPage}
-import {createEmptyTable, clearTable} from "./tableView.js";
+import {createEmptyTable} from "./tableView.js";
 import {fillTable} from "./tableModel.js";
-import {getRegistrationData, getLoginData} from "./user.js";
-import {addLogoutUserNav, addLogoutListener, addLoggedUserNav, clearElement, addLoginBtnListener, addRegisterBtnListener} from "./common.js";
+import {
+	addLogoutUserNav,
+	addLogoutListener,
+	addLoggedUserNav,
+	clearElement,
+	addLoginBtnListener,
+	addRegisterBtnListener
+} from "./common.js";
 
 let nextUrl;
 let previousUrl;
-// let registerBtn = document.getElementById('registrationBtn');
-// let loginBtn = document.getElementById('loginBtn');
 let nextBtn = document.getElementById('nextButton');
 let previousBtn = document.getElementById('previousButton');
 
 nextBtn.addEventListener('click', () => loadPage(nextUrl));
 previousBtn.addEventListener('click', () => loadPage(previousUrl));
-// registerBtn.addEventListener('click', function (event) {
-// 	event.preventDefault();
-// 	getRegistrationData()
-// });
-//
-// loginBtn.addEventListener('click', function (event) {
-// 	event.preventDefault();
-// 	getLoginData();
-// });
 
 
 function loadPage(url) {
 	const logNavInfo = document.getElementById('logNavInfo');
 	let username = sessionStorage.getItem('username');
+	const tableBody = document.querySelector('#table-body');
+
 	let planetsRequest = new XMLHttpRequest();
 	planetsRequest.open('GET', url);
 	planetsRequest.onload = () => {
 		let planetsData = JSON.parse(planetsRequest.responseText);
 		let normalisedData = normalisePlanets(planetsData);
 
-		clearTable();
+		clearElement(tableBody);
 		createEmptyTable(normalisedData);
 		fillTable(normalisedData);
 		nextUrl = planetsData.next;
 		previousUrl = planetsData.previous;
 		btnStatusUpdate(planetsData);
 
-		if (username){
+		if (username) {
 			clearElement(logNavInfo);
 			addLoggedUserNav(username);
 			addLogoutListener();
