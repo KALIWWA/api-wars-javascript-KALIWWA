@@ -4,6 +4,7 @@ import {fillTable} from "./tableModel.js";
 let nextUrl;
 let previousUrl;
 
+
 function loadPage(url) {
 
 	let planetsRequest = new XMLHttpRequest();
