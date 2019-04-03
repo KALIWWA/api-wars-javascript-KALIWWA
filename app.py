@@ -44,12 +44,14 @@ def route_login():
         return jsonify({'state': 'logged'})
 
 
-@app.route('/logout')
+@app.route('/logout', methods=['POST'])
 def route_logout():
     session.pop('username', None)
-    # return jsonify({'state': 'loggedOut'})
-    # flash('You safely logged out')
-    # return redirect('/')
+    if 'username' not in session:
+        return jsonify({'state': 'success'})
+    else:
+        return jsonify({'state': 'fail'})
+
 
 
 @app.route('/favicon.ico')

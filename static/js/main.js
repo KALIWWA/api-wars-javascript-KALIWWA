@@ -1,7 +1,6 @@
 import {createEmptyTable, clearTable} from "./tableView.js";
 import {fillTable} from "./tableModel.js";
-import {getRegistrationData} from "./registration.js";
-import {getLoginData, logout} from "./login.js";
+import {getRegistrationData, getLoginData} from "./user.js";
 
 let nextUrl;
 let previousUrl;
