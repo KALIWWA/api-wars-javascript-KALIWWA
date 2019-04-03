@@ -1,5 +1,5 @@
 export {fillTable}
-import {showResidentsList} from "./residentsView.js";
+import {showResidentsList} from "./residents.js";
 
 function fillTable(data) {
 	let rows = document.querySelectorAll('.row-class');
