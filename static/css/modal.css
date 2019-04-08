@@ -1,3 +1,16 @@
 .modal {
     display: none;
 }
+
+#modalBtn {
+    color: #000;
+    border-color: #fff;
+    background: #fff;
+
+}
+
+#modalBtn:hover {
+    color: #000;
+    border-color: #FFE300;
+    background: #FFE300;
+}
