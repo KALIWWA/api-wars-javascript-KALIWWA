@@ -2,6 +2,28 @@ export {fillTable}
 import {showResidentsList} from "./residents.js";
 
 
+function createResidentButton(i, data, j) {
+	const residentButton = document.createElement('button');
+	residentButton.classList.add('btn', 'btn-outline-info', 'residentButton');
+	residentButton.setAttribute('id', 'resident' + i);
+	residentButton.setAttribute('data-row-number', i);
+	residentButton.textContent = data[i][j].length + ' resident(s)';
+	residentButton.addEventListener('click', () => {
+		showResidentsList(data, i);
+	});
+	return residentButton;
+}
+
+function createVoteButton(i, cells, j) {
+	const voteButton = document.createElement('button');
+	voteButton.classList.add('btn', 'btn-outline-success', 'voteButton');
+	voteButton.setAttribute('id', "vote" + i);
+	voteButton.textContent = 'Vote';
+	// voteButton.addEventListener('click', () => {
+	// 	addVote();
+	// });
+	cells[j].appendChild(voteButton);
+}
 
 function fillTable(data) {
 	let rows = document.querySelectorAll('.row-class');
@@ -18,28 +40,14 @@ function fillTable(data) {
 				cells[j].textContent = data[i][j];
 
 			} else if (j === residentsCellNumber && data[i][j] !== 'No known residents') {
-				const residentButton = document.createElement('button');
-				residentButton.classList.add('btn', 'btn-outline-info', 'residentButton');
-				residentButton.setAttribute('id', 'resident' + i);
-				residentButton.setAttribute('data-row-number', i);
-				residentButton.textContent = data[i][j].length + ' resident(s)';
-				residentButton.addEventListener('click', () => {
-					showResidentsList(data, i);
-				});
+				const residentButton = createResidentButton(i, data, j);
 				cells[j].appendChild(residentButton);
 
 			} else if (j === residentsCellNumber && data[i][j] === 'No known residents') {
 				cells[j].textContent = data[i][j];
 
 			} else if (j === data[i].length && sessionStorage.getItem('username')) {
-				const voteButton = document.createElement('button');
-				voteButton.classList.add('btn', 'btn-outline-success','voteButton');
-				voteButton.setAttribute('id', "vote" + i);
-				voteButton.textContent = 'Vote';
-				// voteButton.addEventListener('click', () => {
-				// 	addVote();
-				// });
-				cells[j].appendChild(voteButton);
+				createVoteButton(i, cells, j);
 			}
 		}
 	}
